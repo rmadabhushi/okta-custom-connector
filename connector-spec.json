@@ -1,0 +1,97 @@
+{
+  "name": "okta-custom-connector",
+
+  "commands": [
+    "std:test-connection",
+    "std:account:list",
+    "std:account:read",
+    "std:entitlement:list"
+  ],
+
+  "sourceConfig": [
+    {
+      "type": "menu",
+      "label": "Configuration",
+      "items": [
+        {
+          "type": "section",
+          "sectionTitle": "Connection",
+          "sectionHelpMessage": "Provide Okta API connection details.",
+          "items": [
+            {
+              "key": "baseUrl",
+              "label": "Okta Base URL",
+              "type": "text",
+              "required": true
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "sectionTitle": "Authentication",
+          "sectionHelpMessage": "Provide API token for authentication.",
+          "items": [
+            {
+              "key": "token",
+              "label": "API Token",
+              "type": "password",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+
+  "accountSchema": {
+    "identityAttribute": "id",
+    "displayAttribute": "email",
+    "attributes": [
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Okta User ID"
+      },
+      {
+        "name": "firstName",
+        "type": "string",
+        "description": "First name"
+      },
+      {
+        "name": "lastName",
+        "type": "string",
+        "description": "Last name"
+      },
+      {
+        "name": "email",
+        "type": "string",
+        "description": "Primary email"
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "description": "Account status"
+      }
+    ]
+  },
+
+  "entitlementSchemas": [
+    {
+      "type": "group",
+      "identityAttribute": "id",
+      "displayAttribute": "name",
+      "attributes": [
+        {
+          "name": "id",
+          "type": "string",
+          "description": "Group ID"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "description": "Group Name"
+        }
+      ]
+    }
+  ]
+}
