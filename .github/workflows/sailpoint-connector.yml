@@ -29,3 +29,8 @@ jobs:
 
       - name: Package SailPoint connector
         run: npm run pack-zip
+      - name: Upload connector artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: connector-package
+          path: "*.zip"
